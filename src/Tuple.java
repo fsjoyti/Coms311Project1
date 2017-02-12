@@ -9,5 +9,15 @@ public class Tuple {
 	public int getKey(){
 		return key;
 	}
-
+   public float getValue(){
+	   return value;
+   }
+   
+  
+   public boolean equals(Tuple t){
+	   if(t==null){
+		   return false;
+	   }
+	   return key == t.key && value == t.value;
+   }
 }
