@@ -6,7 +6,21 @@ public class HashFunction {
 
 	
 	public HashFunction(int range){
+	  range = setinitialp(range);
+	  p = range;
+	  
+	  a = (int)(Math.random() * range);
+	  b = (int)(Math.random() * range);
+	  
+	  
 		
+	}
+
+	private int setinitialp(int range) {
+		while (!isPrime(range)){
+			  range ++;
+		  }
+		return range;
 	}
 	
 	/*
@@ -39,6 +53,24 @@ public class HashFunction {
 		return p;
 	}
 	
+	public void setP(int x){
+		x = setinitialp(x);
+		p = x;
+		
+	}
+	
+	private boolean isPrime(int num){
+		if (num%2==0)
+			return false;
+		for (int i = 3; i*i <= num; i++){
+			if (num%i == 0){
+				return false;
+			}
+			
+		}
+		return true;
+		
+	}
 	
 	
 	
