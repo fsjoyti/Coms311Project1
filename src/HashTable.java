@@ -6,9 +6,12 @@ public class HashTable {
 	private HashFunction h;
 	private int sizeofHashTable;
 	private int maxLoad;
+
 	private float avgLoad;
 	private float loadFactor;
 	private int numElements;
+
+
 	
 	/**
 	 * Finds the smallest prime integer p whose value is at least size. Creates
@@ -85,6 +88,7 @@ public class HashTable {
 		return loadFactor;
 	}
 	
+
 	/**
 	 * returns the number of Tuples 
 	 * that are currently stored in the hash table.
@@ -100,18 +104,23 @@ public class HashTable {
 	 * @param t
 	 * 
 	 */
+
+	
+
+
 	public void add(Tuple t){
 		
 		int hashkey = h.hash(t.getKey());
 		hashtable[hashkey].add(t);
+
 		numElements++;
+
 		if(loadFactor > 0.7){
 			rehash();
 			
 			
 			
-		}
-		
+		}		
 		
 	}
 	/**
@@ -152,13 +161,12 @@ public class HashTable {
 			ArrayList<Tuple> myList = new ArrayList<Tuple>();
 			return myList;
 		}
+
 		
 	}
-	/**
-     * Private helper method to rehash
-     * 
-     * 
-     */
+
+
+
 	
 @SuppressWarnings("unchecked")
 private void rehash(){
