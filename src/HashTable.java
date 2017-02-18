@@ -83,7 +83,7 @@ public class HashTable {
 	 * @return
 	 */
 	public float loadFactor(){
-		loadFactor = (numElements()/size());
+		loadFactor =(float) numElements/sizeofHashTable ;
 		
 		return loadFactor;
 	}
@@ -133,8 +133,9 @@ public class HashTable {
 		ListIterator<Tuple> listIterator = tempList.listIterator();
 		while(listIterator.hasNext()){
     		Tuple value = listIterator.next();
-    		if (value.getKey() == t.getKey()){
+    		if (value.equals(t)){
     			hashtable[h.hash(t.getKey())].remove(value);
+    			numElements--;
     		}
     		
     		
@@ -164,8 +165,19 @@ public class HashTable {
 
 		
 	}
-
-
+	
+// For testing purposes to be removed 
+         public HashFunction returnhash(){
+        	 return h;
+        	 
+         }
+         
+         
+      // For testing purposes to be removed 
+         public LinkedList<Tuple>[] returnhashTable(){
+        	 return hashtable;
+        	 
+         }
 
 	
 @SuppressWarnings("unchecked")
