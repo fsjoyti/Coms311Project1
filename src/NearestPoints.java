@@ -28,6 +28,23 @@ public class NearestPoints {
 		
 	}
 	
+	public ArrayList <Float> naiveNearestPoints(float p){
+		ArrayList <Float> nearestPoints = new ArrayList<Float>();
+		for (int i = 0; i < setofPoints.size();i ++){
+			float point = setofPoints.get(i);
+			float difference = point - p;
+			float abs = Math.abs(difference);
+			if (abs <= 1){
+				nearestPoints.add(point);
+			}
+		}
+		
+		 return nearestPoints;
+		
+	}
+	
+	
+	
 	
 	
 	
