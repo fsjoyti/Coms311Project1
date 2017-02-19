@@ -21,6 +21,12 @@ public class NearestPoints {
 		setofPoints = new ArrayList<Float>(pointSet);
 	}
 
+	/**
+	 * @param p
+	 *            Returns an array list of points (from the set S) that are
+	 *            close to p.
+	 * @return
+	 */
 	public ArrayList<Float> naiveNearestPoints(float p) {
 		ArrayList<Float> nearestPoints = new ArrayList<Float>();
 		for (int i = 0; i < setofPoints.size(); i++) {
@@ -31,22 +37,23 @@ public class NearestPoints {
 				nearestPoints.add(point);
 			}
 		}
-
 		return nearestPoints;
-
 	}
 
+	/**
+	 * Builds the data structure that enables to quickly answer nearest point
+	 * queries
+	 */
 	public void buildDataStructure() {
 		int n = setofPoints.size();
-		int m = 0;
+		int m = 0; // Initial size of the hash table
 		while (m <= (1.5 * n)) {
 			m++;
 		}
 
 		table = new HashTable(m);
 
-		System.out.println(m);
-		table = new HashTable(m);
+		System.out.println(m); // TODO - Remove later
 
 		for (int i = 0; i < n; i++) {
 			float p = setofPoints.get(i);
@@ -55,15 +62,48 @@ public class NearestPoints {
 			table.add(point);
 
 		}
+
 	}
 
+	/**
+	 * 
+	 * @param p
+	 * @return Returns an array list of points (from the S) that are close to p.
+	 *         This method must use the data structure that was built.
+	 */
 	public ArrayList<Float> npHashNearestPoints(float p) {
 		ArrayList<Float> nearestPoints = new ArrayList<Float>();
+		ArrayList<Tuple> nearest_prev_pt = new ArrayList<Tuple>();
+		ArrayList<Tuple> nearest_next_pt = new ArrayList<Tuple>();
 		int g = (int) (Math.floor(p));
+
 		ArrayList<Tuple> listofPoints = table.search(g);
+
+		if (g >= 1) {
+
+			nearest_prev_pt = table.search(g - 1);
+		}
+		if (g + 1 < table.size()) {
+
+			nearest_next_pt = table.search(g + 1);
+		}
+
+		for (int i = 0; i < nearest_prev_pt.size(); i++) {
+			Tuple point = nearest_prev_pt.get(i);
+			float value = point.getValue();
+			nearestPoints.add(value);
+
+		}
 
 		for (int i = 0; i < listofPoints.size(); i++) {
 			Tuple point = listofPoints.get(i);
+			float value = point.getValue();
+			nearestPoints.add(value);
+
+		}
+
+		for (int i = 0; i < nearest_next_pt.size(); i++) {
+			Tuple point = nearest_next_pt.get(i);
 			float value = point.getValue();
 			nearestPoints.add(value);
 
