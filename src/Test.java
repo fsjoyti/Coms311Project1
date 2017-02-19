@@ -1,10 +1,12 @@
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 public class Test {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws UnsupportedEncodingException, IOException {
 		// TODO Auto-generated method stub
 	/*	HashTable h1 = new HashTable(3);
 		System.out.println("Size of hashtable"+h1.size());
@@ -74,18 +76,27 @@ public class Test {
 		list.add((float) 2.56);
 		list.add((float) 1.34);
 		list.add((float) 6.57);
-		list.add((float) 5.0);
+		list.add((float) 5.1);
+		list.add((float) 3.6);
+		list.add((float) 2.46);
+		list.add((float) 1.24);
+		list.add((float) 6.67);
+		list.add((float) 5.7);
 		
 		NearestPoints np = new NearestPoints(list);
 		
 		//Testing Naive Nearest points
 		
 		System.out.println("The nearest points are: " +np.naiveNearestPoints(4.5f));
-		
+		System.out.println("The nearest points for 3.9 are: " +np.naiveNearestPoints(3.9f));
 		//Testing Neighbor preserving hashing
 		np.buildDataStructure();
 		System.out.println("The Array list of points: " +np.npHashNearestPoints(4.5f));
 
+		//Testing for all nearest points text file
+		
+		np.allNearestPointsNaive();
+		np.allNearestPointsHash();
 	}
 
 }
