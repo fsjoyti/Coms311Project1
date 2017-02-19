@@ -43,6 +43,27 @@ public class NearestPoints {
 		
 	}
 	
+	public void buildDataStructure(){
+		int n = setofPoints.size();
+		int m = 0;
+		
+		while (m  <= (1.5 * n)) {
+			m ++;
+		}
+		
+		HashTable table = new HashTable(m);
+		
+		for (int i = 0; i < n ; i++){
+			float p = setofPoints.get(i);
+			int g = (int)(Math.floor(p));
+			 Tuple point = new Tuple(g,p);
+			 table.add(point);
+			
+		}
+		
+		
+	}
+	
 	
 	
 	
