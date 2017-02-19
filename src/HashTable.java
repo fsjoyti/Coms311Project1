@@ -73,7 +73,7 @@ public class HashTable {
 			sum += list.size();
 			
 		}
-		avgLoad = sum/numElements;
+		avgLoad = (float)sum/numElements;
 		
 		
 		return avgLoad;
@@ -110,17 +110,18 @@ public class HashTable {
 
 	public void add(Tuple t){
 		
-		int hashkey = h.hash(t.getKey());
-		hashtable[hashkey].add(t);
-
-		numElements++;
-
 		if(loadFactor > 0.7){
 			rehash();
 			
 			
 			
-		}		
+		}	
+		
+		int hashkey = h.hash(t.getKey());
+		hashtable[hashkey].add(t);
+
+		numElements++;
+
 		
 	}
 	/**
@@ -188,6 +189,7 @@ private void rehash(){
 	sizeofHashTable = setsize(size_new);
     LinkedList<Tuple>[] oldhashtable = hashtable;
     
+    
     hashtable = new LinkedList[sizeofHashTable];
     for (int i= 0; i < sizeofHashTable ; i++){
 		hashtable[i] = new LinkedList<Tuple>();
@@ -202,13 +204,19 @@ private void rehash(){
     	ListIterator<Tuple> listIterator = old.listIterator();
     	while(listIterator.hasNext()){
     		Tuple value = listIterator.next();
-    		add(value);
+    		HashFunction newhash = new HashFunction(sizeofHashTable);
+    		int hashkey = newhash.hash(value.getKey());
+    		hashtable[hashkey].add(value);
+    		
+    		
     		
     		
     	}
     
     	
     }
+	
+	
 	
 }
 /**

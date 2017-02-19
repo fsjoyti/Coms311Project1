@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.ListIterator;
+import java.util.*;
 
 public class Test {
 
@@ -32,7 +33,37 @@ public class Test {
 	    
 	    //h1.remove(t2);
 	    //System.out.println("Number of elements in the hashtable"+ h1.numElements());
-	    System.out.println(h1.loadFactor());
+	    System.out.println("Load factor"+h1.loadFactor());
+	    System.out.println("Average load"+h1.averageLoad());
+	    
+	    ArrayList <Tuple> a1 = h1.search(3);
+	    System.out.println(a1.size());
+	    
+	    for(int i = 0; i < a1.size(); i++){
+	    	Tuple a = a1.get(i);
+	    	System.out.println(a.getKey());
+	    	System.out.println(a.getValue());
+	    }
+	    
+	    Tuple t3 = new Tuple(4,8);
+	    h1.add(t3);
+	    System.out.println("Number of elements in the hashtable"+ h1.numElements());
+	    System.out.println("Load factor"+ h1.loadFactor());
+	    Tuple t4 = new Tuple(6,9);
+	    h1.add(t4);
+	    System.out.println("Number of elements in the hashtable"+ h1.numElements());
+	    System.out.println("Size of hashtable"+h1.size());
+	    System.out.println("Load factor"+ h1.loadFactor());
+	    
+	    Tuple t5 = new Tuple(6,9);
+	    h1.add(t5);
+	    System.out.println("Number of elements in the hashtable"+ h1.numElements());
+	    System.out.println("Size of hashtable"+h1.size());
+	    
+	    
+	    
+	    
+	    
 	    
 	   
 	    
