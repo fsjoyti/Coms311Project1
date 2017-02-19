@@ -43,9 +43,9 @@ public class NearestPoints {
 			m++;
 		}
 
-     table = new HashTable(m);
-     
-     System.out.println(m);
+		table = new HashTable(m);
+
+		System.out.println(m);
 		table = new HashTable(m);
 
 		for (int i = 0; i < n; i++) {
@@ -61,13 +61,66 @@ public class NearestPoints {
 		ArrayList<Float> nearestPoints = new ArrayList<Float>();
 		int g = (int) (Math.floor(p));
 		ArrayList<Tuple> listofPoints = table.search(g);
-		
-		for (int i = 0; i < listofPoints.size();i++){
+
+		for (int i = 0; i < listofPoints.size(); i++) {
 			Tuple point = listofPoints.get(i);
-			
+			float value = point.getValue();
+			nearestPoints.add(value);
+
 		}
 
 		return nearestPoints;
+	}
+
+	public void allNearestPointsNaive() {
+		for (int i = 0; i < setofPoints.size(); i++) {
+			float point = setofPoints.get(i);
+			ArrayList<Float> nearestPoints = naiveNearestPoints(point);
+			File file = new File("NaiveSolution.txt");
+			try {
+				FileWriter fwriter = new FileWriter(file);
+				PrintWriter pWriter = new PrintWriter(fwriter);
+				pWriter.print("Point" + " " + "Nearest Point");
+				pWriter.println();
+
+				for (int j = 0; j < nearestPoints.size(); j++) {
+					pWriter.print(point + " ");
+					pWriter.println(nearestPoints.get(j));
+
+				}
+
+			} catch (Exception e) {
+				System.out.println("Unable to write to file");
+			}
+
+		}
+
+	}
+
+	public void allNearestPointsHash() {
+		for (int i = 0; i < setofPoints.size(); i++) {
+			float point = setofPoints.get(i);
+			ArrayList<Float> nearestPoints = npHashNearestPoints(point);
+			File file = new File("HashSolution.txt");
+			try {
+
+				FileWriter fwriter = new FileWriter(file);
+				PrintWriter pWriter = new PrintWriter(fwriter);
+				pWriter.print("Point" + " " + "Nearest Point");
+				pWriter.println();
+
+				for (int j = 0; j < nearestPoints.size(); j++) {
+					pWriter.print(point + " ");
+					pWriter.println(nearestPoints.get(j));
+
+				}
+
+			} catch (Exception e) {
+				System.out.println("Unable to write to file");
+
+			}
+
+		}
 	}
 
 }
