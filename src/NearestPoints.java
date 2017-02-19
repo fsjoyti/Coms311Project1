@@ -65,10 +65,36 @@ public class NearestPoints {
 		
 		for (int i = 0; i < listofPoints.size();i++){
 			Tuple point = listofPoints.get(i);
+			float value = point.getValue();
+			nearestPoints.add(value);
 			
 		}
 
 		return nearestPoints;
+	}
+	
+	public void allNearestPointsNaive() {
+		for (int i = 0; i <  setofPoints.size(); i++ ){
+		 float point = setofPoints.get(i);
+		 ArrayList<Float> nearestPoints = naiveNearestPoints(point);
+		  File file = new File("NaiveSolution.txt");
+		  try{
+		  FileWriter fwriter = new FileWriter(file);
+		  PrintWriter pWriter = new PrintWriter(fwriter);
+		  pWriter.print("Point" + " " + "Nearest Point");
+		   pWriter.println();
+		   
+		   
+		  
+		  
+		  }
+		  catch(Exception e){
+			  System.out.println("Unable to write to file");
+		  }
+		 
+		
+			
+		}
 	}
 
 }
