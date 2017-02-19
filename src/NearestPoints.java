@@ -1,72 +1,74 @@
 import java.util.*;
 import java.io.*;
+
 public class NearestPoints {
 	private ArrayList<Float> setofPoints;
-	
+	private HashTable table;
 
-	public NearestPoints(String dataFile) throws FileNotFoundException{
+	public NearestPoints(String dataFile) throws FileNotFoundException {
 		setofPoints = new ArrayList<Float>();
 		File f = new File(dataFile);
 		Scanner input = new Scanner(f);
-		while(input.hasNextLine()){
+		while (input.hasNextLine()) {
 			String value = input.nextLine();
 			float point = Float.valueOf(value);
 			setofPoints.add(point);
-			
+
 		}
-		
-		
-		
-		
-		
-		
+
 	}
-	
-	public NearestPoints(ArrayList<Float> pointSet){
-		 setofPoints = new ArrayList<Float>(pointSet);
-		 
-		
+
+	public NearestPoints(ArrayList<Float> pointSet) {
+		setofPoints = new ArrayList<Float>(pointSet);
+
 	}
-	
-	public ArrayList <Float> naiveNearestPoints(float p){
-		ArrayList <Float> nearestPoints = new ArrayList<Float>();
-		for (int i = 0; i < setofPoints.size();i ++){
+
+	public ArrayList<Float> naiveNearestPoints(float p) {
+		ArrayList<Float> nearestPoints = new ArrayList<Float>();
+		for (int i = 0; i < setofPoints.size(); i++) {
 			float point = setofPoints.get(i);
 			float difference = point - p;
 			float abs = Math.abs(difference);
-			if (abs <= 1){
+			if (abs <= 1) {
 				nearestPoints.add(point);
 			}
 		}
-		
-		 return nearestPoints;
-		
+
+		return nearestPoints;
+
 	}
-	
-	public void buildDataStructure(){
+
+	public void buildDataStructure() {
 		int n = setofPoints.size();
 		int m = 0;
-		
-		while (m  <= (1.5 * n)) {
-			m ++;
+
+		while (m <= (1.5 * n)) {
+			m++;
 		}
-		
-		HashTable table = new HashTable(m);
-		
-		for (int i = 0; i < n ; i++){
+
+		table = new HashTable(m);
+
+		for (int i = 0; i < n; i++) {
 			float p = setofPoints.get(i);
-			int g = (int)(Math.floor(p));
-			 Tuple point = new Tuple(g,p);
-			 table.add(point);
+			int g = (int) (Math.floor(p));
+			Tuple point = new Tuple(g, p);
+			table.add(point);
+
+		}
+
+	}
+
+	public ArrayList<Float> npHashNearestPoints(float p) {
+		ArrayList<Float> nearestPoints = new ArrayList<Float>();
+		int g = (int) (Math.floor(p));
+		ArrayList<Tuple> listofPoints = table.search(g);
+		
+		for (int i = 0; i < listofPoints.size();i++){
+			Tuple point = listofPoints.get(i);
 			
 		}
-		
-		
+
+		return nearestPoints;
 	}
-	
-	
-	
-	
-	
-	
+
 }
