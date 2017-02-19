@@ -1,4 +1,3 @@
-
 public class Tuple {
 	private int key;
 	private float value;

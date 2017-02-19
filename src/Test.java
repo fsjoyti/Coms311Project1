@@ -1,3 +1,4 @@
+
 import java.io.FileNotFoundException;
 import java.util.*;
 
@@ -64,12 +65,6 @@ public class Test {
 	    np.buildDataStructure();
 	   
 	   
-	    
-	    
-	   
-	    
-	    
-	    
 
 	}
 

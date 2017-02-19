@@ -15,12 +15,10 @@ public class NearestPoints {
 			setofPoints.add(point);
 
 		}
-
 	}
 
 	public NearestPoints(ArrayList<Float> pointSet) {
 		setofPoints = new ArrayList<Float>(pointSet);
-
 	}
 
 	public ArrayList<Float> naiveNearestPoints(float p) {
@@ -41,11 +39,13 @@ public class NearestPoints {
 	public void buildDataStructure() {
 		int n = setofPoints.size();
 		int m = 0;
-
 		while (m <= (1.5 * n)) {
 			m++;
 		}
 
+     table = new HashTable(m);
+     
+     System.out.println(m);
 		table = new HashTable(m);
 
 		for (int i = 0; i < n; i++) {
@@ -55,7 +55,6 @@ public class NearestPoints {
 			table.add(point);
 
 		}
-
 	}
 
 	public ArrayList<Float> npHashNearestPoints(float p) {
