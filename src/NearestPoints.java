@@ -39,8 +39,6 @@ public class NearestPoints {
 	public void buildDataStructure() {
 		int n = setofPoints.size();
 		int m = 0;
-		System.out.println(n);
-        
 		while (m <= (1.5 * n)) {
 			m++;
 		}
@@ -48,6 +46,7 @@ public class NearestPoints {
      table = new HashTable(m);
      
      System.out.println(m);
+		table = new HashTable(m);
 
 		for (int i = 0; i < n; i++) {
 			float p = setofPoints.get(i);
@@ -56,7 +55,19 @@ public class NearestPoints {
 			table.add(point);
 
 		}
+	}
 
+	public ArrayList<Float> npHashNearestPoints(float p) {
+		ArrayList<Float> nearestPoints = new ArrayList<Float>();
+		int g = (int) (Math.floor(p));
+		ArrayList<Tuple> listofPoints = table.search(g);
+		
+		for (int i = 0; i < listofPoints.size();i++){
+			Tuple point = listofPoints.get(i);
+			
+		}
+
+		return nearestPoints;
 	}
 
 }
