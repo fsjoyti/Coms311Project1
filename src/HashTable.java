@@ -22,7 +22,7 @@ public class HashTable {
 	@SuppressWarnings("unchecked")
 	public HashTable(int size){
 		sizeofHashTable = setsize(size);
-		h = new HashFunction(sizeofHashTable );
+		h = new HashFunction(sizeofHashTable);
 		hashtable = new LinkedList[sizeofHashTable ];
 		for (int i= 0; i < sizeofHashTable ; i++){
 			hashtable[i] = new LinkedList<Tuple>();
@@ -166,6 +166,7 @@ public class HashTable {
 
 		
 	}
+	
 	
 // For testing purposes to be removed 
          public HashFunction returnhash(){

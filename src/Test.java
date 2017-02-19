@@ -1,10 +1,9 @@
-import java.util.LinkedList;
-import java.util.ListIterator;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 		HashTable h1 = new HashTable(3);
 		System.out.println("Size of hashtable"+h1.size());
@@ -59,10 +58,11 @@ public class Test {
 	    h1.add(t5);
 	    System.out.println("Number of elements in the hashtable"+ h1.numElements());
 	    System.out.println("Size of hashtable"+h1.size());
+	    System.out.println("Load factor"+ h1.loadFactor());
 	    
-	    
-	    
-	    
+	    NearestPoints np = new NearestPoints("points.txt");
+	    ArrayList<Float> point = np.points();
+	   
 	    
 	    
 	   
