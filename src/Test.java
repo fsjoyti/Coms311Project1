@@ -62,6 +62,8 @@ public class Test {
 	    System.out.println("Load factor"+ h1.loadFactor());
 	    
 	    NearestPoints np = new NearestPoints("points.txt");
+	    
+	    
 	    np.buildDataStructure();
 	   
 	   
