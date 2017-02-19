@@ -7,7 +7,6 @@ public class HashFunction {
 	
 	public HashFunction(int range){
 	  range = setinitialp(range);
-	  
 	  p = range;
 	  
 	  a = (int)(Math.random() * range);
