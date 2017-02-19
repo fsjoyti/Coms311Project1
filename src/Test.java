@@ -6,7 +6,7 @@ public class Test {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
-		HashTable h1 = new HashTable(3);
+	/*	HashTable h1 = new HashTable(3);
 		System.out.println("Size of hashtable"+h1.size());
 	    System.out.println("Value of A "+h1.returnhash().getA());
 	    System.out.println("Value of B"+h1.returnhash().getB());
@@ -65,8 +65,26 @@ public class Test {
 	    
 	    
 	    np.buildDataStructure();
+	   */
 	   
-	   
+		//------ Testing Nearest points------//
+		
+		ArrayList<Float> list = new ArrayList<Float>();
+		list.add((float) 3.9);
+		list.add((float) 2.56);
+		list.add((float) 1.34);
+		list.add((float) 6.57);
+		list.add((float) 5.0);
+		
+		NearestPoints np = new NearestPoints(list);
+		
+		//Testing Naive Nearest points
+		
+		System.out.println("The nearest points are: " +np.naiveNearestPoints(4.5f));
+		
+		//Testing Neighbor preserving hashing
+		np.buildDataStructure();
+		System.out.println("The Array list of points: " +np.npHashNearestPoints(4.5f));
 
 	}
 

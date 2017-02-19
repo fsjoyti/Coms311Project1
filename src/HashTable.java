@@ -130,12 +130,14 @@ public class HashTable {
 	 */
 
 	public void remove(Tuple t) {
-		LinkedList<Tuple> tempList = hashtable[h.hash(t.getKey())];
+		
+		int hashkey =  Math.abs(h.hash(t.getKey()));
+		LinkedList<Tuple> tempList = hashtable[hashkey];
 		ListIterator<Tuple> listIterator = tempList.listIterator();
 		while (listIterator.hasNext()) {
 			Tuple value = listIterator.next();
 			if (value.equals(t)) {
-				hashtable[h.hash(t.getKey())].remove(value);
+				hashtable[hashkey].remove(value);
 				numElements--;
 			}
 
