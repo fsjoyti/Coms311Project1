@@ -83,6 +83,12 @@ public class NearestPoints {
 		  pWriter.print("Point" + " " + "Nearest Point");
 		   pWriter.println();
 		   
+		   for (int j = 0; j < nearestPoints.size(); j++ ){
+			   pWriter.print(point+ " ");
+			   pWriter.println(nearestPoints.get(j));
+			   
+		   }
+		   
 		   
 		  
 		  
