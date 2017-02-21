@@ -10,17 +10,32 @@ public class RecSys {
 	 * @param mrMatrix
 	 * @throws FileNotFoundException 
 	 */
-	public void RecSys(String mrMatrix) throws FileNotFoundException{
+	public RecSys(String mrMatrix) throws FileNotFoundException{
 		
 		//Access file and parse the movies and ratings
 		File f = new File(mrMatrix);
 		Scanner input = new Scanner(f);
-		while(input.hasNext()){
-			String value = input.next();
+		while(input.hasNextLine()){
+			String value = input.next().trim();
 			int user = Integer.valueOf(value);
-			String movies = input.nextLine();
-			int noOfmovies = Integer.valueOf(movies);
+			String movies = input.nextLine().trim();
+			int no_of_movies = Integer.valueOf(movies);
 			
+			Float[][] ratings = new Float[user][no_of_movies];
+			for(int i = 0; i<user; i++){
+				for(int j = 0; j < no_of_movies; j++){
+					while(input.hasNextLine()){
+						String value1 = input.next().trim();
+						ratings[i][j] = Float.valueOf(value1);
+						//System.out.println(input.nextLine().trim());
+					}
+					//System.out.println(input.nextLine());
+					//ratings[i][j] = Integer.valueOf(value);
+				}
+			}
+
+			System.out.println("User: " +user + "Num of movies: " +no_of_movies);
+			System.out.println("Ratings obtained: " +ratings);
 		}
 		
 	}
