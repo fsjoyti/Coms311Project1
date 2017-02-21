@@ -153,7 +153,7 @@ public class HashTable {
 	 */
 	public ArrayList<Tuple> search(int k) {
 
-		int hashkey = h.hash(k);
+		int hashkey = Math.abs(h.hash(k));
 		if (hashtable.length > hashkey && hashtable[hashkey] != null) {
 			LinkedList<Tuple> tempList = hashtable[hashkey];
 			List<Tuple> mylist = new ArrayList<Tuple>(tempList);

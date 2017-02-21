@@ -137,30 +137,12 @@ public class NearestPoints {
 		}
 		 
 		   writer.close();
-		
-		
-		/*for (int i = 0; i < setofPoints.size(); i++){ 
-			try {
-				FileWriter fwriter = new FileWriter(file);
-				PrintWriter pWriter = new PrintWriter(fwriter);
-				pWriter.print("Point" + " " + "Nearest Point");
-				pWriter.println();
-
-				for (int j = 0; j < nearestPoints.size(); j++) {
-					pWriter.print(point + " ");
-					pWriter.println(nearestPoints.get(j));
-				}
-
-			} catch (Exception e) {
-				System.out.println("Unable to write to file");
-			}
-
-		}*/
 
 	}
 
 	public void allNearestPointsHash() throws FileNotFoundException, UnsupportedEncodingException, IOException {
-		 PrintWriter writer = new PrintWriter("HashSolution.txt", "UTF-8");
+		
+		PrintWriter writer = new PrintWriter("HashSolution.txt", "UTF-8");
 		 ArrayList<Float> nearestPoints = new ArrayList<Float>();
 		 float point = 0.0f;
 		 writer.println("Point" + " " + "Nearest Points ");

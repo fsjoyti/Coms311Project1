@@ -83,18 +83,22 @@ public class Test {
 		
 		NearestPoints np = new NearestPoints(list);
 		
+		NearestPoints np_points = new NearestPoints("points.txt");
+	    np_points.buildDataStructure();
+		
 		//Testing Naive Nearest points
 		
-		System.out.println("The nearest points are: " +np.naiveNearestPoints(4.5f));
+		/*System.out.println("The nearest points are: " +np.naiveNearestPoints(4.5f));
 		System.out.println("The nearest points for 3.9 are: " +np.naiveNearestPoints(3.9f));
 		//Testing Neighbor preserving hashing
 		np.buildDataStructure();
-		System.out.println("The Array list of points: " +np.npHashNearestPoints(4.5f));
+		System.out.println("The Array list of points: " +np.npHashNearestPoints(4.5f));*/
 
 		//Testing for all nearest points text file
 		
-		np.allNearestPointsNaive();
-		np.allNearestPointsHash();
+		//np_points.allNearestPointsNaive();
+		np_points.allNearestPointsHash();
+		System.out.println("COmpleted running");
 	}
 
 }
