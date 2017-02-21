@@ -53,8 +53,6 @@ public class NearestPoints {
 
 		table = new HashTable(m);
 
-		System.out.println(m); // TODO - Remove later
-
 		for (int i = 0; i < n; i++) {
 			float p = setofPoints.get(i);
 			int g = (int) (Math.floor(p));

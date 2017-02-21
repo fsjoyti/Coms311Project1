@@ -19,6 +19,10 @@ public class HashFunction {
 	  
 		
 	}
+	
+	/**
+	 * Private helper method to find the smallest prime > range
+	 */
 
 	private int setinitialp(int range) {
 		while (!isPrime(range)){
@@ -64,6 +68,10 @@ public class HashFunction {
 		p = x;
 		
 	}
+	
+	/**
+	 * Private helper method to check if a number is prime
+	 */
 	
 	private boolean isPrime(int num){
 		if (num%2==0)
