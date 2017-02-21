@@ -47,6 +47,7 @@ public class HashFunction {
 	
 	public void setA(int x){
 		a = x % p;
+		
 	}
 	
 	
@@ -66,6 +67,9 @@ public class HashFunction {
 	public void setP(int x){
 		x = setinitialp(x);
 		p = x;
+		a = (int)(Math.random() * p);
+		b = (int)(Math.random() * p);
+		
 		
 	}
 	
