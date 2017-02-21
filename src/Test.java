@@ -75,6 +75,7 @@ public class Test {
 		list.add((float) 1.34);
 		list.add((float) 6.57);
 		list.add((float) 5.1);
+		list.add(4.0f);
 		list.add((float) 3.6);
 		list.add((float) 2.46);
 		list.add((float) 1.24);
@@ -88,12 +89,12 @@ public class Test {
 		
 		//Testing Naive Nearest points
 		
-		/*System.out.println("The nearest points are: " +np.naiveNearestPoints(4.5f));
-		System.out.println("The nearest points for 3.9 are: " +np.naiveNearestPoints(3.9f));*/
+		//System.out.println("The nearest points are: " +np.naiveNearestPoints(4.5f));
+		System.out.println("The nearest points for 3.9 are (By naive): " +np.naiveNearestPoints(3.9f));
 		
 	    //Testing Neighbor preserving hashing
 		np.buildDataStructure();
-		System.out.println("The Array list of points for 3.9 are: " +np.npHashNearestPoints(3.9f));
+		System.out.println("The Array list of points for 3.9 (By hash) are: " +np.npHashNearestPoints(3.9f));
 
 		//Testing for all nearest points text file
 		
