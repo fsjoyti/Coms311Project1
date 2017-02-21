@@ -89,15 +89,16 @@ public class Test {
 		//Testing Naive Nearest points
 		
 		/*System.out.println("The nearest points are: " +np.naiveNearestPoints(4.5f));
-		System.out.println("The nearest points for 3.9 are: " +np.naiveNearestPoints(3.9f));
-		//Testing Neighbor preserving hashing
+		System.out.println("The nearest points for 3.9 are: " +np.naiveNearestPoints(3.9f));*/
+		
+	    //Testing Neighbor preserving hashing
 		np.buildDataStructure();
-		System.out.println("The Array list of points: " +np.npHashNearestPoints(4.5f));*/
+		System.out.println("The Array list of points for 3.9 are: " +np.npHashNearestPoints(3.9f));
 
 		//Testing for all nearest points text file
 		
 		//np_points.allNearestPointsNaive();
-		np_points.allNearestPointsHash();
+		//np_points.allNearestPointsHash();
 		System.out.println("COmpleted running");
 	}
 

@@ -120,7 +120,7 @@ public class NearestPoints {
 	 * @throws FileNotFoundException 
 	 */
 	public void allNearestPointsNaive() throws FileNotFoundException, UnsupportedEncodingException , IOException{
-		//File file = new File("NaiveSolution.txt");
+		
 		 PrintWriter writer = new PrintWriter("NaiveSolution.txt", "UTF-8");
 		ArrayList<Float> nearestPoints = new ArrayList<Float>();
 		float point = 0.0f;
@@ -128,7 +128,6 @@ public class NearestPoints {
 		for (int i = 0; i < setofPoints.size(); i++) {
 			point = setofPoints.get(i);
 			nearestPoints = naiveNearestPoints(point);
-			//System.out.println(nearestPoints);
 			
 			for(int j = 0; j< nearestPoints.size(); j++) {
 			  writer.println(+point + "    " +nearestPoints.get(j)); 
