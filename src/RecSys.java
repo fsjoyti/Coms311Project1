@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class RecSys {
 	
@@ -5,10 +8,20 @@ public class RecSys {
 	 * The string mrMatrix is contains the absolute path name of the file that
 	 * contains the mapped ratings matrix.
 	 * @param mrMatrix
+	 * @throws FileNotFoundException 
 	 */
-	private void RecSys(String mrMatrix){
+	public void RecSys(String mrMatrix) throws FileNotFoundException{
 		
 		//Access file and parse the movies and ratings
+		File f = new File(mrMatrix);
+		Scanner input = new Scanner(f);
+		while(input.hasNext()){
+			String value = input.next();
+			int user = Integer.valueOf(value);
+			String movies = input.nextLine();
+			int noOfmovies = Integer.valueOf(movies);
+			
+		}
 		
 	}
 	/**
@@ -22,7 +35,7 @@ public class RecSys {
 	 * @return
 	 * The rating
 	 */
-	private Float ratingOf(int u, int m){
+	public Float ratingOf(int u, int m){
 		
 		
 		return 0f;
