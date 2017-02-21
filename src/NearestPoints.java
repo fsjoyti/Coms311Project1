@@ -66,33 +66,38 @@ public class NearestPoints {
 	}
 
 	/**
-	 * 
 	 * @param p
 	 * @return Returns an array list of points (from the S) that are close to p.
 	 *         This method must use the data structure that was built.
 	 */
 	public ArrayList<Float> npHashNearestPoints(float p) {
 		ArrayList<Float> nearestPoints = new ArrayList<Float>();
+		ArrayList<Float> finalArr = new ArrayList<Float>();
+		
 		ArrayList<Tuple> nearest_prev_pt = new ArrayList<Tuple>();
 		ArrayList<Tuple> nearest_next_pt = new ArrayList<Tuple>();
 		int g = (int) (Math.floor(p));
-
-		ArrayList<Tuple> listofPoints = table.search(g);
-
+		
+		
 		if (g >= 1) {
 
 			nearest_prev_pt = table.search(g - 1);
 		}
+		
+		ArrayList<Tuple> listofPoints = table.search(g); 
+		
 		if (g + 1 < table.size()) {
 
-			nearest_next_pt = table.search(g + 1);
+			nearest_next_pt = table.search(g+1); 
 		}
+		
+		
 
 		for (int i = 0; i < nearest_prev_pt.size(); i++) {
 			Tuple point = nearest_prev_pt.get(i);
 			float value = point.getValue();
 			nearestPoints.add(value);
-
+			
 		}
 
 		for (int i = 0; i < listofPoints.size(); i++) {
@@ -100,16 +105,22 @@ public class NearestPoints {
 			float value = point.getValue();
 			nearestPoints.add(value);
 
-		}
+		} 
 
 		for (int i = 0; i < nearest_next_pt.size(); i++) {
 			Tuple point = nearest_next_pt.get(i);
 			float value = point.getValue();
 			nearestPoints.add(value);
-
+	
 		}
-
-		return nearestPoints;
+		
+		for(int i = 0; i< nearestPoints.size(); i++){
+			
+			if(Math.abs(p - nearestPoints.get(i)) <= 1){
+				finalArr.add(nearestPoints.get(i));
+			}
+		}
+		return finalArr;
 	}
 
 	/**
@@ -120,7 +131,7 @@ public class NearestPoints {
 	 * @throws FileNotFoundException 
 	 */
 	public void allNearestPointsNaive() throws FileNotFoundException, UnsupportedEncodingException , IOException{
-		//File file = new File("NaiveSolution.txt");
+		
 		 PrintWriter writer = new PrintWriter("NaiveSolution.txt", "UTF-8");
 		ArrayList<Float> nearestPoints = new ArrayList<Float>();
 		float point = 0.0f;
@@ -128,7 +139,6 @@ public class NearestPoints {
 		for (int i = 0; i < setofPoints.size(); i++) {
 			point = setofPoints.get(i);
 			nearestPoints = naiveNearestPoints(point);
-			//System.out.println(nearestPoints);
 			
 			for(int j = 0; j< nearestPoints.size(); j++) {
 			  writer.println(+point + "    " +nearestPoints.get(j)); 
@@ -137,30 +147,12 @@ public class NearestPoints {
 		}
 		 
 		   writer.close();
-		
-		
-		/*for (int i = 0; i < setofPoints.size(); i++){ 
-			try {
-				FileWriter fwriter = new FileWriter(file);
-				PrintWriter pWriter = new PrintWriter(fwriter);
-				pWriter.print("Point" + " " + "Nearest Point");
-				pWriter.println();
-
-				for (int j = 0; j < nearestPoints.size(); j++) {
-					pWriter.print(point + " ");
-					pWriter.println(nearestPoints.get(j));
-				}
-
-			} catch (Exception e) {
-				System.out.println("Unable to write to file");
-			}
-
-		}*/
 
 	}
 
 	public void allNearestPointsHash() throws FileNotFoundException, UnsupportedEncodingException, IOException {
-		 PrintWriter writer = new PrintWriter("HashSolution.txt", "UTF-8");
+		
+		PrintWriter writer = new PrintWriter("HashSolution.txt", "UTF-8");
 		 ArrayList<Float> nearestPoints = new ArrayList<Float>();
 		 float point = 0.0f;
 		 writer.println("Point" + " " + "Nearest Points ");

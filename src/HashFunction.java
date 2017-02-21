@@ -5,13 +5,17 @@ public class HashFunction {
 	private int p;
 
 	
+	/**
+	 * Picks the first (positive) prime integer whose value is at least range,
+	 * and sets the value of p to that prime integer. Then picks two random integers x and y from
+	 * {0, 1, · · · , p − 1} and sets a as x and b as y.
+	 */
+	
 	public HashFunction(int range){
 	  range = setinitialp(range);
 	  p = range;
-	  
 	  a = (int)(Math.random() * range);
 	  b = (int)(Math.random() * range);
-	  
 	  
 		
 	}
@@ -23,13 +27,15 @@ public class HashFunction {
 		return range;
 	}
 	
-	/*
-	 * Is this supposed to be of type int
+	/**
+	 * Returns the value of the hash function on x;
+	 * i.e, returns (ax + b)%p.
 	 */
 	public int hash(int x){
 		int value = (a * x + b) % p;
 		return value;
 	}
+	
 	
 	public int getA(){
 		return a;

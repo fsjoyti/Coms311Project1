@@ -148,12 +148,12 @@ public class HashTable {
 	/**
 	 * Finds tuple with the key in the hash table.
 	 * @param k
-	 *            the item to search for.
+	 * the item to search for.
 	 * @return an array list of Tuples (in the hash table) whose key equals k.
 	 */
 	public ArrayList<Tuple> search(int k) {
-
-		int hashkey = h.hash(k);
+		
+		int hashkey = Math.abs(h.hash(k));
 		if (hashtable.length > hashkey && hashtable[hashkey] != null) {
 			LinkedList<Tuple> tempList = hashtable[hashkey];
 			List<Tuple> mylist = new ArrayList<Tuple>(tempList);
