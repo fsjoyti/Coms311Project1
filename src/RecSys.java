@@ -5,7 +5,11 @@ import java.util.Scanner;
 
 public class RecSys {
 	
-	Float[][] ratings_arr;
+	int[][] ratings_arr;
+	int user;
+	int no_of_movies;
+	ArrayList <Float> userPoint;
+	
 	
 	/**
 	 * The string mrMatrix is contains the absolute path name of the file that
@@ -16,13 +20,58 @@ public class RecSys {
 	public RecSys(String mrMatrix) throws FileNotFoundException{
 		
 		//Access file and parse the movies and ratings
+		userPoint = new ArrayList<Float>();
+		 String[] strNums;
 		File f = new File(mrMatrix);
 		Scanner input = new Scanner(f);
+		String value = input.next().trim();
+		 user = Integer.valueOf(value);
+		String movies = input.nextLine().trim();
+		 no_of_movies = Integer.valueOf(movies);
+		 //System.out.println(user);
+		 //System.out.println( no_of_movies);
+		 ratings_arr = new int[user][no_of_movies];
+		 for(int i = 0; i<user; i++){
+				for(int j = 0; j < no_of_movies; j++){
+					
+					ratings_arr[i][j] =  0;
+				}
+		   }
+		 int count = 0;
+		 while(input.hasNextLine()){
+			 String first = input.next().trim();
+			 
+			 float item = Float.valueOf(first);
+			 userPoint.add(item);
+			 String second = input.nextLine().trim();
+			
+			 int j = 0;
+			 strNums = second.split("\\s");
+			 for(int i=0; i<strNums.length; i++) {
+		           int rating = Integer.parseInt(strNums[i]);
+		          
+		           ratings_arr[count][i]=rating;
+		        }
+			count++;
+			 
+		 }
+		 System.out.println(userPoint.size());
+		 /*
+		 for(int i = 0; i<user; i++){
+				for(int j = 0; j < no_of_movies; j++){
+					
+	                  System.out.println(ratings_arr[i][j]);
+				}
+		   }
+		 */
+		
+		 
+		 /*
 		while(input.hasNextLine()){
 			String value = input.next().trim();
-			int user = Integer.valueOf(value);
+			 user = Integer.valueOf(value);
 			String movies = input.nextLine().trim();
-			int no_of_movies = Integer.valueOf(movies);
+			 no_of_movies = Integer.valueOf(movies);
 			
 		   ratings_arr = new Float[user][no_of_movies];
 		   for(int i = 0; i<user; i++){
@@ -31,41 +80,15 @@ public class RecSys {
 					ratings_arr[i][j] = (float) 0;
 				}
 		   }
-			for(int i = 0; i<user; i++){
-				for(int j = 0; j < no_of_movies; j++){
-					while(input.hasNextLine()){
-						String value1 = input.next().trim();
-						//System.out.println("Value obtained: " +Float.valueOf(value1));
-						ratings_arr[i][j] = Float.valueOf(value1);
-						//System.out.println(input.nextLine().trim());
-					 System.out.println("Ratings obtained: " +ratings_arr[i][j]);
-					}
-					//System.out.println(input.nextLine());
-					//ratings[i][j] = Integer.valueOf(value);
-				}
-				
-				
-			}
+			
+			
 
 			
-			for(int i = 0; i<user; i++){
-				for(int j = 0; j < no_of_movies; j++){
-				
-						
-						//System.out.println("Value obtained: " +Float.valueOf(value1));
-						System.out.println(ratings_arr[i][j]);
-						//System.out.println(input.nextLine().trim());
-						//System.out.println("Ratings obtained: " +ratings[i][j]);
-					
-					//System.out.println(input.nextLine());
-					//ratings[i][j] = Integer.valueOf(value);
-				}
-				
-				
-			}
+			
 			//System.out.println("User: " +user + "Num of movies: " +no_of_movies);
 			
 		}
+		*/
 		
 	}
 	/**
@@ -82,20 +105,20 @@ public class RecSys {
 	public Float ratingOf(int u, int m){
 		System.out.println(u);
 		System.out.println(m);
-		if(ratings_arr[u][m] != 0){
-			return ratings_arr[u][m];
+		
+		if(m>0 && u>0 && ratings_arr[u-1][m-1] != 0){
+			return (float)ratings_arr[u-1][m-1];
 		}
-		ArrayList<Float> usr_pts = null;
-		for(int row = 0; row < ratings_arr.length; row++){
-				
-			usr_pts  = new ArrayList<Float>();
-			usr_pts.add(ratings_arr[row][0]);
-				
-		}	
+		
+	
+		
+	
 			
-		NearestPoints np = new NearestPoints(usr_pts);
-		ArrayList<Float> myArr = np.npHashNearestPoints(ratings_arr[u-1][0]);  
-		System.out.println("My closest users: " +myArr);
+		NearestPoints np = new NearestPoints(userPoint);
+		System.out.println(userPoint.size());
+		
+		ArrayList<Float> myArr = np.npHashNearestPoints(u-1);  
+		System.out.println("My closest users: " +myArr.size());
 	/*	for(int i = 0; i<ratings_arr.length; i++){
 			if(myArr[i] == ratings_arr[i][0]){
 				

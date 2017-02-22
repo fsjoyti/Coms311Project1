@@ -110,7 +110,7 @@ public class Test {
 	    
 	    RecSys sys = new RecSys(path);
 	    
-	    sys.ratingOf(1, 4);
+	    sys.ratingOf(2, 4);
 	  
 	}
 
