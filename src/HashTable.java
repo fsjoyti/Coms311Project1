@@ -159,7 +159,8 @@ public class HashTable {
 			List<Tuple> mylist = new ArrayList<Tuple>(tempList);
 
 			return (ArrayList<Tuple>) mylist;
-		} else {
+		} 
+		else {
 			ArrayList<Tuple> myList = new ArrayList<Tuple>();
 			return myList;
 		}

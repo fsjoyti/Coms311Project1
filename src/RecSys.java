@@ -9,6 +9,7 @@ public class RecSys {
 	int user;
 	int no_of_movies;
 	ArrayList <Float> userPoint;
+	NearestPoints np;
 	
 	
 	/**
@@ -55,42 +56,12 @@ public class RecSys {
 			count++;
 			 
 		 }
-		 System.out.println(userPoint.size());
-		 /*
-		 for(int i = 0; i<user; i++){
-				for(int j = 0; j < no_of_movies; j++){
-					
-	                  System.out.println(ratings_arr[i][j]);
-				}
-		   }
-		 */
-		
+		 //System.out.println(userPoint.size());
+			
+		 np = new NearestPoints(userPoint);
+		 np.buildDataStructure();
 		 
-		 /*
-		while(input.hasNextLine()){
-			String value = input.next().trim();
-			 user = Integer.valueOf(value);
-			String movies = input.nextLine().trim();
-			 no_of_movies = Integer.valueOf(movies);
-			
-		   ratings_arr = new Float[user][no_of_movies];
-		   for(int i = 0; i<user; i++){
-				for(int j = 0; j < no_of_movies; j++){
-					
-					ratings_arr[i][j] = (float) 0;
-				}
-		   }
-			
-			
-
-			
-			
-			//System.out.println("User: " +user + "Num of movies: " +no_of_movies);
-			
 		}
-		*/
-		
-	}
 	/**
 	 * If the user u has rated movie m, then it returns that rating; otherwise
 	 * it will predict the rating, 
@@ -103,28 +74,16 @@ public class RecSys {
 	 * The rating
 	 */
 	public Float ratingOf(int u, int m){
-		System.out.println(u);
-		System.out.println(m);
+		//System.out.println(u);
+		//System.out.println(m);
 		
 		if(m>0 && u>0 && ratings_arr[u-1][m-1] != 0){
 			return (float)ratings_arr[u-1][m-1];
 		}
-		
-	
-		
-	
-			
-		NearestPoints np = new NearestPoints(userPoint);
 		System.out.println(userPoint.size());
 		
 		ArrayList<Float> myArr = np.npHashNearestPoints(u-1);  
 		System.out.println("My closest users: " +myArr.size());
-	/*	for(int i = 0; i<ratings_arr.length; i++){
-			if(myArr[i] == ratings_arr[i][0]){
-				
-			}
-			
-		}*/
 		
 		return 0f;
 	}

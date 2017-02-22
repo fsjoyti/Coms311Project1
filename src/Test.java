@@ -7,6 +7,10 @@ import java.util.*;
 public class Test {
 
 	public static void main(String[] args) throws UnsupportedEncodingException, IOException {
+		
+		
+		//ArrayList<Tuple> list = new ArrayList<Tuple>();
+		
 		// TODO Auto-generated method stub
 	/*	HashTable h1 = new HashTable(3);
 		System.out.println("Size of hashtable"+h1.size());
@@ -110,7 +114,7 @@ public class Test {
 	    
 	    RecSys sys = new RecSys(path);
 	    
-	    sys.ratingOf(2, 4);
+	    sys.ratingOf(2, 0);
 	  
 	}
 

@@ -70,7 +70,6 @@ public class HashFunction {
 		a = (int)(Math.random() * p);
 		b = (int)(Math.random() * p);
 		
-		
 	}
 	
 	/**

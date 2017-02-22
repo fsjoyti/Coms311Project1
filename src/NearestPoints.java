@@ -41,7 +41,8 @@ public class NearestPoints {
 	}
 
 	/**
-	 * Builds the data structure that enables to quickly answer nearest point
+	 * Builds the data structure that enables to quickly answer 
+	 * nearest point
 	 * queries
 	 */
 	public void buildDataStructure() {
@@ -76,10 +77,11 @@ public class NearestPoints {
 		ArrayList<Tuple> nearest_next_pt = new ArrayList<Tuple>();
 		int g = (int) (Math.floor(p));
 		
-		
+		System.out.println("Value of g: " +g);
 		if (g >= 1) {
 
 			nearest_prev_pt = table.search(g - 1);
+			//System.out.println("Prev pt: " +nearest_prev_pt);
 		}
 		
 		ArrayList<Tuple> listofPoints = table.search(g); 
