@@ -26,16 +26,16 @@ public class RecSys {
 		File f = new File(mrMatrix);
 		Scanner input = new Scanner(f);
 		String value = input.next().trim();
-		 user = Integer.valueOf(value);
+		user = Integer.valueOf(value);
 		String movies = input.nextLine().trim();
-		 no_of_movies = Integer.valueOf(movies);
+		no_of_movies = Integer.valueOf(movies);
 		 //System.out.println(user);
 		 //System.out.println( no_of_movies);
-		 ratings_arr = new int[user][no_of_movies];
-		 for(int i = 0; i<user; i++){
-				for(int j = 0; j < no_of_movies; j++){
+		ratings_arr = new int[user][no_of_movies];
+		for(int i = 0; i<user; i++){
+			for(int j = 0; j < no_of_movies; j++){
 					
-					ratings_arr[i][j] =  0;
+				ratings_arr[i][j] =  0;
 				}
 		   }
 		 int count = 0;
@@ -45,7 +45,7 @@ public class RecSys {
 			 float item = Float.valueOf(first);
 			 userPoint.add(item);
 			 String second = input.nextLine().trim();
-			
+			 System.out.println(userPoint);
 			 int j = 0;
 			 strNums = second.split("\\s");
 			 for(int i=0; i<strNums.length; i++) {
@@ -74,18 +74,39 @@ public class RecSys {
 	 * The rating
 	 */
 	public Float ratingOf(int u, int m){
-		//System.out.println(u);
-		//System.out.println(m);
-		
 		if(m>0 && u>0 && ratings_arr[u-1][m-1] != 0){
 			return (float)ratings_arr[u-1][m-1];
 		}
 		System.out.println(userPoint.size());
 		
-		ArrayList<Float> myArr = np.npHashNearestPoints(u-1);  
-		System.out.println("My closest users: " +myArr.size());
+		ArrayList<Float> myArr = np.npHashNearestPoints(userPoint.get(u-1));  
+		System.out.println("The value of p: " +userPoint.get(u-1));
 		
-		return 0f;
+		int[] indices = new int[myArr.size() ];
+		for(int i = 0; i< myArr.size(); i++){
+			for(int j = 0; j< userPoint.size(); j++){
+				
+				if(myArr.get(i).equals(userPoint.get(j))){
+					indices[j] = j;
+				}
+			}
+		}
+		
+		//getting particular rating and then averaging
+		int sum = 0;
+		float average = 0f;
+		int count = 0;
+		for(int i = 0; i<indices.length; i++){
+			int rating = ratings_arr[indices[i]][m-1];
+			if(rating != 0){
+				sum += rating;
+				count ++;
+				
+			}
+			
+		}
+		average = sum / count;
+		return average;
 	}
 	
 }

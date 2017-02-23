@@ -12,7 +12,7 @@ public class Test {
 		//ArrayList<Tuple> list = new ArrayList<Tuple>();
 		
 		// TODO Auto-generated method stub
-	/*	HashTable h1 = new HashTable(3);
+	  /*  HashTable h1 = new HashTable(3);
 		System.out.println("Size of hashtable"+h1.size());
 	    System.out.println("Value of A "+h1.returnhash().getA());
 	    System.out.println("Value of B"+h1.returnhash().getB());
@@ -65,9 +65,9 @@ public class Test {
 	    h1.add(t5);
 	    System.out.println("Number of elements in the hashtable"+ h1.numElements());
 	    System.out.println("Size of hashtable"+h1.size());
-	    System.out.println("Load factor"+ h1.loadFactor());
+	    System.out.println("Load factor"+ h1.loadFactor());*/
 	    
-	    NearestPoints np = new NearestPoints("points.txt");
+	    /*	 NearestPoints np = new NearestPoints("points.txt");
 	    
 	    
 	    np.buildDataStructure();
@@ -90,8 +90,8 @@ public class Test {
 		
 		NearestPoints np = new NearestPoints(list);
 		
-		NearestPoints np_points = new NearestPoints("points.txt");
-	    np_points.buildDataStructure();
+		//NearestPoints np_points = new NearestPoints("points.txt");
+	    // np.buildDataStructure();
 		
 		//Testing Naive Nearest points
 		
@@ -114,7 +114,7 @@ public class Test {
 	    
 	    RecSys sys = new RecSys(path);
 	    
-	    sys.ratingOf(2, 0);
+	    System.out.println("Nearest ratings are: " +sys.ratingOf(4, 3));
 	  
 	}
 

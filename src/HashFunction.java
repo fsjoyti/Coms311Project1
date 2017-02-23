@@ -16,7 +16,6 @@ public class HashFunction {
 	  p = range;
 	  a = (int)(Math.random() * range);
 	  b = (int)(Math.random() * range);
-	  
 		
 	}
 	

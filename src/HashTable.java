@@ -71,7 +71,6 @@ public class HashTable {
 		for (int i = 0; i < sizeofHashTable; i++) {
 			LinkedList<Tuple> list = hashtable[i];
 			sum += list.size();
-
 		}
 		avgLoad = (float) sum / numElements;
 
@@ -204,8 +203,8 @@ public class HashTable {
 			ListIterator<Tuple> listIterator = old.listIterator();
 			while (listIterator.hasNext()) {
 				Tuple value = listIterator.next();
-				HashFunction newhash = new HashFunction(sizeofHashTable);
-				int hashkey = newhash.hash(value.getKey());
+				h = new HashFunction(sizeofHashTable);
+				int hashkey = h.hash(value.getKey());
 				hashtable[hashkey].add(value);
 
 			}
