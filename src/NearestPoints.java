@@ -78,6 +78,7 @@ public class NearestPoints {
 		int g = (int) (Math.floor(p));
 		
 		
+		try{
 		if (g >= 1) {
                                   
 			nearest_prev_pt = table.search(g - 1);
@@ -90,7 +91,9 @@ public class NearestPoints {
 
 			nearest_next_pt = table.search(g+1); 
 		}
-		
+		}catch(NullPointerException e){
+			System.out.println("Hashtable is null");
+		}
 		
 
 		for (int i = 0; i < nearest_prev_pt.size(); i++) {
