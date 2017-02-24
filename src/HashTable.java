@@ -128,7 +128,7 @@ public class HashTable {
 	 * the tuple to remove.
 	 */
 
-	public void remove(Tuple t) {
+	public boolean remove(Tuple t) {
 		
 		int hashkey =  Math.abs(h.hash(t.getKey()));
 		LinkedList<Tuple> tempList = hashtable[hashkey];
@@ -138,9 +138,11 @@ public class HashTable {
 			if (value.equals(t)) {
 				hashtable[hashkey].remove(value);
 				numElements--;
+				return true;
 			}
 
 		}
+		return false;
 
 	}
 
@@ -202,6 +204,17 @@ public class HashTable {
 		}
 
 	}
+	
+	protected int hash(int x) {
+        return h.hash(x);
+    }
+	
+	protected void updateHashFunction(int p) {
+      
+        h.setP(p);
+        // Maintain the same a and b as before (for testing purposes)
+     
+    }
 
 	/**
 	 * Private helper method to calculate the size of hashtable 
