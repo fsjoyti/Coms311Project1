@@ -90,8 +90,8 @@ public class Test {
 		
 		NearestPoints np = new NearestPoints(list);
 		
-		//NearestPoints np_points = new NearestPoints("points.txt");
-	    // np.buildDataStructure();
+		NearestPoints np_points = new NearestPoints("points.txt");
+	     np_points.buildDataStructure();
 		
 		//Testing Naive Nearest points
 		
@@ -105,7 +105,7 @@ public class Test {
 		//Testing for all nearest points text file
 		
 		//np_points.allNearestPointsNaive();
-		//np_points.allNearestPointsHash();
+		np_points.allNearestPointsHash();
 		//System.out.println("COmpleted running");
 	    
 	    /*Test for RecSys */ 
@@ -114,7 +114,8 @@ public class Test {
 	    
 	    RecSys sys = new RecSys(path);
 	    
-	    System.out.println("Nearest ratings are: " +sys.ratingOf(4, 3));
+	    System.out.println("Nearest ratings are: " +sys.ratingOf(2, 2));//3.0
+	    System.out.println("Nearest ratings are: " +sys.ratingOf(3, 4));
 	  
 	}
 

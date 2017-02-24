@@ -72,19 +72,19 @@ public class NearestPoints {
 	public ArrayList<Float> npHashNearestPoints(float p) {
 		ArrayList<Float> nearestPoints = new ArrayList<Float>();
 		ArrayList<Float> finalArr = new ArrayList<Float>();
-		
+		ArrayList<Tuple> listofPoints = new ArrayList<Tuple>();
 		ArrayList<Tuple> nearest_prev_pt = new ArrayList<Tuple>();
 		ArrayList<Tuple> nearest_next_pt = new ArrayList<Tuple>();
 		int g = (int) (Math.floor(p));
 		
-		System.out.println("Value of g: " +g);
+		
 		if (g >= 1) {
-
+                                  
 			nearest_prev_pt = table.search(g - 1);
 			//System.out.println("Prev pt: " +nearest_prev_pt);
 		}
 		
-		ArrayList<Tuple> listofPoints = table.search(g); 
+		 listofPoints = table.search(g); 
 		
 		if (g + 1 < table.size()) {
 

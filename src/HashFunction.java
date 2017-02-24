@@ -35,8 +35,11 @@ public class HashFunction {
 	 * i.e, returns (ax + b)%p.
 	 */
 	public int hash(int x){
-		int value = (a * x + b) % p;
-		return value;
+		//int value = (a * x + b) % p;
+		int value = (a*x +b);
+		int hash = mod(value,p);
+		
+		return hash;
 	}
 	
 	
@@ -45,7 +48,8 @@ public class HashFunction {
 	}
 	
 	public void setA(int x){
-		a = x % p;
+		//a = x % p;
+		a = mod(x,p);
 		
 	}
 	
@@ -55,7 +59,8 @@ public class HashFunction {
 	}
 	
 	public void setB(int y){
-		b = y % p;
+		//b = y % p;
+		b = mod(y,p);
 	}
 	
 	
@@ -88,6 +93,15 @@ public class HashFunction {
 		
 	}
 	
+	private int mod(int x, int y)
+	{
+	    int result = x % y;
+	    if (result < 0)
+	    {
+	        result += y;
+	    }
+	    return result;
+	}
 	
 	
 	
