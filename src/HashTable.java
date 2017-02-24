@@ -166,17 +166,7 @@ public class HashTable {
 
 	}
 
-	// For testing purposes to be removed
-	public HashFunction returnhash() {
-		return h;
-
-	}
-
-	// For testing purposes to be removed
-	public LinkedList<Tuple>[] returnhashTable() {
-		return hashtable;
-
-	}
+	
 	
 	/**
 	 * Rehashing the hashtable
