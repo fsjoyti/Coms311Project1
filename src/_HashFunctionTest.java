@@ -16,6 +16,7 @@ public class _HashFunctionTest {
         hf.setB(99);
         // hash(int x) returns (a*x + b) % p
         assertEquals(1299, hf.hash(12));
+        System.out.println(hf.getP());
         // tests ints that partially calculate larger than max int
         assertEquals(1828, hf.hash(32123789));
         // Negative numbers
