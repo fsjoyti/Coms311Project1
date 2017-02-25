@@ -67,10 +67,13 @@ public class HashTable {
 	 */
 	public float averageLoad() {
 		int sum = 0;
+		int count = 0;
 
 		for (int i = 0; i < sizeofHashTable; i++) {
 			LinkedList<Tuple> list = hashtable[i];
+			
 			sum += list.size();
+			
 		}
 		avgLoad = (float) sum / numElements;
 
